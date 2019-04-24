@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+   <servlet>
+      <servlet-name>ClienteController</servlet-name>
+      <servlet-class>controller.ClienteController</servlet-class>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>ClienteController</servlet-name>
+      <url-pattern>/cliente/*</url-pattern>
+   </servlet-mapping>
+
+</web-app>
