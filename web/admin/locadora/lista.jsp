@@ -11,7 +11,7 @@
         <h2>
             <a href="locadora?action=cadastro">Adicione Nova Locadora</a>
             &nbsp;&nbsp;&nbsp;
-            <a href="lista">Lista de Locadoras</a>
+            <a href="locadora?action=lista">Lista de Locadoras</a>
         </h2>
     </center>
     <div align="center">

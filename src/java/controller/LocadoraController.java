@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet(urlPatterns = {"/locadora"})
+@WebServlet(urlPatterns = {"/admin/locadora"})
 public class LocadoraController extends HttpServlet{
     private LocadoraDAO dao;
     

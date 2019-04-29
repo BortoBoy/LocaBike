@@ -72,6 +72,55 @@ public class LocadoraDAO {
         return listaLocadora;
     }
     
+    public List<Locadora> get_by_cidade(String Cidade) {
+        List<Locadora> listaLocadora = new ArrayList<>();
+        String sql = "SELECT * FROM Locadora where cidade = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, Cidade);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String email = resultSet.getString("email");
+                String senha = resultSet.getString("senha");
+                String cnpj  = resultSet.getString("cnpj"); 
+                String nome = resultSet.getString("nome");
+                String cidade = resultSet.getString("cidade");
+                
+                Locadora locadora = new Locadora(id, email, senha, cnpj, nome, cidade);
+                listaLocadora.add(locadora);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaLocadora;
+    }
+    
+    public List<String> getCidades() {
+        List<String> listaCidades = new ArrayList<>();
+        String sql = "select distinct cidade from locadora order by cidade";
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while(resultSet.next()) {
+                String cidade = resultSet.getString("cidade");
+                listaCidades.add(cidade);
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listaCidades;
+    }
+    
     public void delete(Locadora locadora) {
         String sql = "DELETE FROM Locadora where id = ?";
         try {
