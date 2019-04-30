@@ -35,14 +35,16 @@
                     <td><c:out value="${cliente.sexo}" /></td>
                     <td><c:out value="${cliente.data_nasc}" /></td>
                     <td>
-                        <a href="cliente?action=edicao&id=<c:out value='${cliente.id}' />">Edição</a>
+                        <a href="<%= request.getContextPath() %>/admin/cliente?action=edicao&id=<c:out value='${cliente.id}' />">Edição</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="cliente?action=remocao&id=<c:out value='${cliente.id}' />" onclick="return confirm('Tem certeza de que deseja excluir este item?');">
+                        <a href="<%= request.getContextPath() %>/admin/cliente?action=remocao&id=<c:out value='${cliente.id}' />" onclick="return confirm('Tem certeza de que deseja excluir este item?');">
                             Remoção</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+        <a href="<%= request.getContextPath() %>/admin/">  <h4> Voltar </h4> </a>
+        <a href="<%= request.getContextPath() %>/login?logout=true"> <h4> Logout </h4> </a>
     </div>
 </body>
 </html>

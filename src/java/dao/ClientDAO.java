@@ -139,4 +139,26 @@ public class ClientDAO {
         }
         return cliente;
     }
+    
+    public int exists(String Email, String Password) {
+        int id = -1;
+        Cliente cliente = null;
+        String sql = "SELECT * FROM CLIENTE WHERE email = ? and senha = ?";
+        try {
+            Connection conn = this.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, Email);
+            statement.setString(2, Password);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
 }

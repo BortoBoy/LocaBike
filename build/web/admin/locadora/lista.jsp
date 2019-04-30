@@ -33,14 +33,16 @@
                     <td><c:out value="${locadora.cnpj}" /></td>
                     <td><c:out value="${locadora.senha}" /></td>
                     <td>
-                        <a href="locadora?action=edicao&id=<c:out value='${locadora.id}' />">Edição</a>
+                        <a href="<%= request.getContextPath() %>/admin/locadora?action=edicao&id=<c:out value='${locadora.id}' />">Edição</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="locadora?action=remocao&id=<c:out value='${locadora.id}' />" onclick="return confirm('Tem certeza de que deseja excluir este item?');">
+                        <a href="<%= request.getContextPath() %>/admin/locadora?action=remocao&id=<c:out value='${locadora.id}' />" onclick="return confirm('Tem certeza de que deseja excluir este item?');">
                             Remoção</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+        <a href="<%= request.getContextPath() %>/admin/">  <h4> Voltar </h4> </a>
+        <a href="<%= request.getContextPath() %>/login?logout=true"> <h4> Logout </h4> </a>
     </div>
 </body>
 </html>

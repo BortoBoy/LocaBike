@@ -26,9 +26,8 @@
                             <input type='submit' value='Filtrar'>
                         </td>
                     </tr>
-                </table>                
             </form>
-            
+        </table>     
         <table border="1" cellpadding="5">
             <tr>
                 <th>Nome</th>
@@ -41,10 +40,10 @@
                 <td><c:out value="${locadora.nome}" /></td>
                 <td><c:out value="${locadora.cidade}" /></td>
                 <td><c:out value="${locadora.email}" /></td>
-                <td><a href="link para locação">Alugar</a></td>
+                <td><a href="alugar?locadora=${locadora.id}">Alugar</a></td>
             </tr>
             </c:forEach>
-        </table>
+        </table>    
     </center>
     </body>
 </html>

@@ -14,7 +14,8 @@
             <li style="color: red"><c:out value="${message}" /></li>
         </c:if>
         <table border="1" cellpadding="5">
-            <form method="POST" action="">
+            <form method="POST" action="login">                   
+                <input name='locadora' type="text" hidden value="<c:out value="${locadora_id}"/>"/>
                 <tr>
                     <th>
                        Usuário 
