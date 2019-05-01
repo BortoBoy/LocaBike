@@ -1,0 +1,49 @@
+create table administradores(
+	id integer not null generated always as identity (start with 1, increment by 1) primary key,
+	username varchar(20) not null,
+	password varchar(20) not null
+);
+
+insert into administradores(username, password) values ('admin', 'admin');
+
+create table cliente(
+	id integer not null generated always as identity (start with 1, increment by 1) primary key,
+	nome varchar(256) not null,
+	email varchar(256) not null,
+        senha varchar(20) not null,
+        cpf varchar(15) not null,
+        tel varchar(15) not null,
+        sexo varchar(10),
+        data_de_nasc date
+);
+
+
+insert into cliente(nome, email,senha,cpf,tel,sexo,data_de_nasc) values 
+    ('Gabriel Bortolote', 'gbortolote@gmail.com', '123', '35481244888', '189960290', 'Masculino', '04-06-1998');
+
+insert into cliente(nome, email,senha,cpf,tel,sexo,data_de_nasc) values 
+    ('Caio Ferreira', 'caioferreira@gmail.com', '123', '11123231231', '123123112', 'Masculino', '08-07-1997');
+
+create table locadora(
+    id integer not null generated always as identity (start with 1, increment by 1) primary key,
+    nome varchar(256) not null,
+    email varchar(256) not null,
+    senha varchar(20) not null,
+    cnpj varchar(25) not null,
+    cidade varchar(256) not null
+);
+
+insert into locadora(nome, email,senha,cnpj,cidade) values 
+    ('Loca Bike', 'locabike@gmial.com'. '123', '123123123123123', 'Osvaldo Cruz');
+
+insert into locadora(nome, email,senha,cnpj,cidade) values 
+    ('SmartBike', 'smatbike@gmial.com'. '123', '120938102948', 'São Carlos');
+
+create table locacao(
+    id integer not null generated always as identity (start with 1, increment by 1) primary key,    
+    data_locacao varchar(15) not null,
+    cliente_id integer not null,
+    locadora_id integer not null,
+    constraint foreign key (cliente_id) references cliente(id) on delete cascade,
+    constraint foreign key (locadora_id) references locadora(id) on delete cascade
+);
